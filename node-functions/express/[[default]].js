@@ -28,7 +28,8 @@ app.get("/info", async (req, res) => {
           // 如果需透传用户请求头，也可以在这里添加
         }
       });
-  res.json({ message: "Hello from Express on Node Functions!" + fetchResponse});
+  const responseText = await fetchResponse.text();
+  res.json({ message: "Hello from Express on Node Functions!", apiResponse: responseText });
 });
 // 根路由
 app.post("/upload", async (req, res) => {
